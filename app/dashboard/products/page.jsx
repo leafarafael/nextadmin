@@ -23,7 +23,7 @@ const ProductsPage = async ({ searchParams }) => {
         <thead>
           <tr>
             <td>Title</td>
-            <td>Created At</td>
+            <td>Brand</td>
             <td>Used</td>
             <td>Defective</td>
             <td>Stock</td>
@@ -36,7 +36,7 @@ const ProductsPage = async ({ searchParams }) => {
               <td>
                 <div className={styles.product}>
                   <Image
-                    src={product.img || "/noproduct.jpg"}
+                    src={product.img || "/insert-image.png"}
                     alt=""
                     width={40}
                     height={40}
@@ -46,7 +46,8 @@ const ProductsPage = async ({ searchParams }) => {
                 </div>
               </td>
               
-              <td>{product.createdAt?.toString().slice(4, 16)}</td>
+              {/* <td>{product.createdAt?.toString().slice(4, 16)}</td> */}
+              <td>{product.brand}</td>
               <td>{product.used}</td>
               <td>{product.defective}</td>
               <td>{product.stock}</td>

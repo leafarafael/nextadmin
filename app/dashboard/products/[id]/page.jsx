@@ -20,6 +20,8 @@ const SingleProductPage = async ({ params }) => {
           <input type="hidden" name="id" value={product.id} />
           <label>Title</label>
           <input type="text" name="title" placeholder={product.title} />
+          <label>Brand</label>
+          <input type="text" name="brand" placeholder={product.brand} />
           <label>Used</label>
           <input type="number" name="used" placeholder={product.used} />
           <label>Defective</label>

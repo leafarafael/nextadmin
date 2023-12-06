@@ -30,8 +30,18 @@ const menuItems = [
         icon: <MdSupervisedUserCircle />,
       },
       {
+        title: "User Accounts",
+        path: "/dashboard",
+        icon: <MdShoppingBag />,
+      },
+      {
         title: "Assets",
         path: "/dashboard/products",
+        icon: <MdShoppingBag />,
+      },
+      {
+        title: "Network Address",
+        path: "/dashboard",
         icon: <MdShoppingBag />,
       },
 
