@@ -20,8 +20,10 @@ const SingleProductPage = async ({ params }) => {
           <input type="hidden" name="id" value={product.id} />
           <label>Title</label>
           <input type="text" name="title" placeholder={product.title} />
-          <label>Price</label>
-          <input type="number" name="price" placeholder={product.price} />
+          <label>Used</label>
+          <input type="number" name="used" placeholder={product.used} />
+          <label>Defective</label>
+          <input type="number" name="defective" placeholder={product.defective} />
           <label>Stock</label>
           <input type="number" name="stock" placeholder={product.stock} />
           <label>Color</label>
@@ -38,8 +40,10 @@ const SingleProductPage = async ({ params }) => {
           />
           <label>Cat</label>
           <select name="cat" id="cat">
-            <option value="kitchen">Kitchen</option>
-            <option value="computers">Computers</option>
+            <option value="kitchen">Office Equipment</option>
+            <option value="kitchen">Classroom Equipment</option>
+            <option value="computers">Hardware</option>
+            <option value="kitchen">Software</option>
           </select>
           <label>Description</label>
           <textarea

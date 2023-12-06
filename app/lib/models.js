@@ -48,9 +48,14 @@ const productSchema = new mongoose.Schema(
     },
     desc: {
       type: String,
-      required: true,
+      required: false,
     },
-    price: {
+    used: {
+      type: Number,
+      required: true,
+      min: 0,
+    },
+    defective: {
       type: Number,
       required: true,
       min: 0,
