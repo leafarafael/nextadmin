@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { Product, User } from "./models";
+import { Employee, Product, User } from "./models";
 import { connectToDB } from "./utils";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
@@ -70,7 +70,7 @@ export const updateUser = async (formData) => {
 };
 
 export const addProduct = async (formData) => {
-  const { title, brand, desc, used, defective, stock, color, size } =
+  const { title, brand, prodmodel, desc, used, defective, stock, color, size } =
     Object.fromEntries(formData);
 
   try {
@@ -79,6 +79,7 @@ export const addProduct = async (formData) => {
     const newProduct = new Product({
       title,
       brand,
+      prodmodel,
       desc,
       used,
       defective,
@@ -98,7 +99,7 @@ export const addProduct = async (formData) => {
 };
 
 export const updateProduct = async (formData) => {
-  const { id, title, brand,desc, used, defective, stock, color, size } =
+  const { id, title, brand, prodmodel, desc, used, defective, stock, color, size } =
     Object.fromEntries(formData);
 
   try {
@@ -107,6 +108,7 @@ export const updateProduct = async (formData) => {
     const updateFields = {
       title,
       brand,
+      prodmodel,
       desc,
       used,
       defective,
@@ -130,6 +132,63 @@ export const updateProduct = async (formData) => {
   redirect("/dashboard/products");
 };
 
+
+
+export const addEmployee = async (formData) => {
+  const { name, laptop, charger, bag, pen } =
+    Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+
+    const newEmployee = new Employee({
+      name, 
+      laptop, 
+      charger, 
+      bag,
+      pen,
+    });
+
+    await newEmployee.save();
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to create employee!");
+  }
+
+  revalidatePath("/dashboard/employees");
+  redirect("/dashboard/employees");
+};
+
+export const updateEmployee = async (formData) => {
+  const { id, name, laptop, charger, bag, pen  } =
+    Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+
+    const updateFields = {
+      name, 
+      laptop, 
+      charger, 
+      bag,
+      pen,
+    };
+
+    Object.keys(updateFields).forEach(
+      (key) =>
+        (updateFields[key] === "" || undefined) && delete updateFields[key]
+    );
+
+    await Employee.findByIdAndUpdate(id, updateFields);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to update employee!");
+  }
+
+  revalidatePath("/dashboard/employees");
+  redirect("/dashboard/employees");
+};
+
 export const deleteUser = async (formData) => {
   const { id } = Object.fromEntries(formData);
 
@@ -141,7 +200,7 @@ export const deleteUser = async (formData) => {
     throw new Error("Failed to delete user!");
   }
 
-  revalidatePath("/dashboard/products");
+  revalidatePath("/dashboard/users");
 };
 
 export const deleteProduct = async (formData) => {
@@ -156,6 +215,20 @@ export const deleteProduct = async (formData) => {
   }
 
   revalidatePath("/dashboard/products");
+};
+
+export const deleteEmployee = async (formData) => {
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+    await Employee.findByIdAndDelete(id);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to delete employee!");
+  }
+
+  revalidatePath("/dashboard/employeess");
 };
 
 export const authenticate = async (prevState, formData) => {

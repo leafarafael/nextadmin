@@ -39,6 +39,37 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+
+const employeeSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    laptop: {
+      type: String,
+      required: false,
+    },
+    charger: {
+      type: String,
+      required: false,
+    },
+    bag: {
+      type: String,
+      required: false,
+    },
+    pen: {
+      type: String,
+      required: false,
+    },
+    note: {
+      type: String,
+      required: false,
+    }
+  },
+  { timestamps: true }
+);
+
 const productSchema = new mongoose.Schema(
   {
     title: {
@@ -47,6 +78,10 @@ const productSchema = new mongoose.Schema(
       unique: true,
     },
     brand: {
+      type: String,
+      required: false,
+    },
+    prodmodel:{
       type: String,
       required: false,
     },
@@ -83,5 +118,5 @@ const productSchema = new mongoose.Schema(
 );
 
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
-export const Product =
-  mongoose.models.Product || mongoose.model("Product", productSchema);
+export const Product = mongoose.models.Product || mongoose.model("Product", productSchema);
+export const Employee = mongoose.models.Employee || mongoose.model("Employee", employeeSchema);

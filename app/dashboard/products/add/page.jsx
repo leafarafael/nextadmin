@@ -5,21 +5,30 @@ const AddProductPage = () => {
   return (
     <div className={styles.container}>
       <form action={addProduct} className={styles.form}>
-        <input type="text" placeholder="title" name="title" required />
-        <input type="text" placeholder="brand" name="brand" />
+        <input type="text" placeholder="Title" name="title" required />
+        <input type="text" placeholder="Brand" name="brand" />
+        <input type="text" placeholder="Model" name="model" />
+        <input type="text" placeholder="Serial Number" name="serial number" />
+        <select name="status" id="status">
+            <option value="inuse">In Use</option>
+            <option value="available">Available</option>
+            <option value="notinuse">Not In Use</option>
+            <option value="inrepair">In Repair</option>
+            <option value="reserve">Reserve</option>
+            <option value="fordispossal">For Dispossal</option>
+        </select>
+
         <select name="cat" id="cat">
           <option value="general">Choose a Category</option>
-          <option value="computer">Office Equipment</option>
-          <option value="computer">Classroom Equipment</option>
-          <option value="computer">Software</option>
-          <option value="computer">Hardware</option>
-          
+          <option value="office">Office Equipment</option>
+          <option value="classroom">Classroom Equipment</option>
+          <option value="software">Software</option>
+          <option value="hardware">Hardware</option>
         </select>
-        <input type="number" placeholder="used" name="used" required />
-        <input type="number" placeholder="defective" name="defective" required />
-        <input type="number" placeholder="stock" name="stock" required />
-        <input type="text" placeholder="color" name="color" />
-        <input type="text" placeholder="size" name="size" />
+
+        <input type="number" placeholder="Quantity" name="quantity" required />
+
+        <input type="text" placeholder="Color" name="color" />
         <textarea
           name="desc"
           id="desc"

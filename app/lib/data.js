@@ -1,4 +1,4 @@
-import { Product, User } from "./models";
+import { Product, User, Employee } from "./models";
 import { connectToDB } from "./utils";
 
 export const fetchUsers = async (q, page) => {
@@ -58,6 +58,42 @@ export const fetchProduct = async (id) => {
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch product!");
+  }
+};
+
+
+
+export const fetchEmployees = async (q, page) => {
+  console.log(q);
+  const regex = new RegExp(q, "i");
+  const ITEM_PER_PAGE = 10;
+  const sortField = 'name'; 
+  const sortDirection = 'asc'; 
+  const sortOptions = {};
+  sortOptions[sortField] = sortDirection === 'asc' ? 1 : -1;
+
+  try {
+    connectToDB();
+    const count = await Employee.find({ name: { $regex: regex } }).count();
+    const employees = await Employee.find({ name: { $regex: regex } })
+      .sort(sortOptions)
+      .limit(ITEM_PER_PAGE)
+      .skip(ITEM_PER_PAGE * (page - 1));
+    return { count, employees };
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch employees!");
+  }
+};
+
+export const fetchEmployee = async (id) => {
+  try {
+    connectToDB();
+    const employee = await Employee.findById(id);
+    return employee;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch employee!");
   }
 };
 

@@ -22,25 +22,29 @@ const SingleProductPage = async ({ params }) => {
           <input type="text" name="title" defaultValue={product.title} />
           <label>Brand</label>
           <input type="text" name="brand" defaultValue={product.brand} />
-          <label>Used</label>
-          <input type="number" name="used" defaultValue={product.used} />
-          <label>Defective</label>
-          <input type="number" name="defective" defaultValue={product.defective} />
-          <label>Stock</label>
-          <input type="number" name="stock" defaultValue={product.stock} />
+          <label>Model</label>
+          <input type="text" name="prodmodel" defaultValue={product.prodmodel} />
+          <label>Status</label>
+          <select name="status" id="status">
+            <option value="inuse">In Use</option>
+            <option value="available">Available</option>
+            <option value="notinuse">Not In Use</option>
+            <option value="inrepair">In Repair</option>
+            <option value="reserve">Reserve</option>
+            <option value="fordispossal">For Dispossal</option>
+          </select>
+    
+          <label>Quantity</label>
+          <input type="quantity" name="quantity" defaultValue={product.stock} />
+
           <label>Color</label>
           <input
             type="text"
             name="color"
             placeholder={product.color || "color"}
           />
-          <label>Size</label>
-          <textarea
-            type="text"
-            name="size"
-            placeholder={product.size || "size"}
-          />
-          <label>Cat</label>
+
+          <label>Category</label>
           <select name="cat" id="cat">
             <option value="kitchen">Office Equipment</option>
             <option value="kitchen">Classroom Equipment</option>

@@ -25,13 +25,13 @@ const menuItems = [
         icon: <MdDashboard />,
       },
       {
-        title: "Employees",
+        title: "Users",
         path: "/dashboard/users",
         icon: <MdSupervisedUserCircle />,
       },
       {
-        title: "User Accounts",
-        path: "/dashboard",
+        title: "Employees",
+        path: "/dashboard/employees",
         icon: <MdShoppingBag />,
       },
       {
