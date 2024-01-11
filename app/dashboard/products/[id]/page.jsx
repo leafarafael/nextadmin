@@ -19,15 +19,15 @@ const SingleProductPage = async ({ params }) => {
         <form action={updateProduct} className={styles.form}>
           <input type="hidden" name="id" value={product.id} />
           <label>Title</label>
-          <input type="text" name="title" placeholder={product.title} />
+          <input type="text" name="title" defaultValue={product.title} />
           <label>Brand</label>
-          <input type="text" name="brand" placeholder={product.brand} />
+          <input type="text" name="brand" defaultValue={product.brand} />
           <label>Used</label>
-          <input type="number" name="used" placeholder={product.used} />
+          <input type="number" name="used" defaultValue={product.used} />
           <label>Defective</label>
-          <input type="number" name="defective" placeholder={product.defective} />
+          <input type="number" name="defective" defaultValue={product.defective} />
           <label>Stock</label>
-          <input type="number" name="stock" placeholder={product.stock} />
+          <input type="number" name="stock" defaultValue={product.stock} />
           <label>Color</label>
           <input
             type="text"
