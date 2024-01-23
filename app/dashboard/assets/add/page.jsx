@@ -53,7 +53,7 @@ const AddAssetPage = async () => {
 
         <input type="text" placeholder="Serial Number" name="serial" />
 
-        <select name="employee" id="employee">
+        <select name="user" id="user">
           <option value="">Select user</option>
           {employees.map((employee) => (
             <option key={employee._id} value={employee.name}>{employee.name}</option>

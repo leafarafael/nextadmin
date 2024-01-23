@@ -1,11 +1,12 @@
 import { updateAsset} from "@/app/lib/actions";
-import { fetchAsset } from "@/app/lib/data";
+import { fetchAsset, fetchAllEmployees } from "@/app/lib/data";
 import styles from "@/app/ui/dashboard/assets/singleAsset/singleAsset.module.css";
 import Image from "next/image";
 
 const SingleAssetPage = async ({ params }) => {
   const { id } = params;
   const asset = await fetchAsset(id);
+  const { employees } = await fetchAllEmployees();
 
 
   return (
@@ -58,8 +59,8 @@ const SingleAssetPage = async ({ params }) => {
           <label>Quantity</label>
           <input type="number" name="quantity" defaultValue={asset.quantity} />
           
-          <select name="employee" id="employee">
-            <option value="">Select user</option>
+          <select name="user" id="user">
+            <option value={asset.user} disabled selected>{asset.user}</option>
             {employees.map((employee) => (
               <option key={employee._id} value={employee.name}>{employee.name}</option>
             ))}

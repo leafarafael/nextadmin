@@ -1,6 +1,6 @@
 import { updateEmployee } from "@/app/lib/actions";
 import { fetchEmployee } from "@/app/lib/data";
-import styles from "@/app/ui/dashboard/products/singleProduct/singleProduct.module.css";
+import styles from "@/app/ui/dashboard/employees/singleEmployee/singleEmployee.module.css";
 import Image from "next/image";
 
 const SingleEmployeePage = async ({ params }) => {
