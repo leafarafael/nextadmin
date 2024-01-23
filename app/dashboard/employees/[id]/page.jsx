@@ -9,12 +9,12 @@ const SingleEmployeePage = async ({ params }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.infoContainer}>
+      {/* <div className={styles.infoContainer}>
         <div className={styles.imgContainer}>
           <Image src="/noavatar.png" alt="" fill />
         </div>
         {employee.name}
-      </div>
+      </div> */}
       <div className={styles.formContainer}>
         <form action={updateEmployee} className={styles.form}>
           <input type="hidden" name="id" value={employee.id} />
@@ -22,11 +22,13 @@ const SingleEmployeePage = async ({ params }) => {
           <input type="text" name="name" defaultValue={employee.name} />
           
           <label>Laptop</label>
-          <select name="laptop" id="laptop">
+          <input type="checkbox" id="laptop" name="laptop"  defaultChecked={employee.laptop} />
+
+          {/* <select name="laptop" id="laptop">
             <option value={employee.laptop} selected hidden>{employee.laptop}</option>
             <option value="yes">Yes</option>
             <option value="no">No</option>
-          </select>
+          </select> */}
 
           <label>Charger</label>
           <select name="charger" id="charger">

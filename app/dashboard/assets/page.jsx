@@ -1,21 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "@/app/ui/dashboard/products/products.module.css";
+import styles from "@/app/ui/dashboard/assets/assets.module.css";
 import Search from "@/app/ui/dashboard/search/search";
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
-import { fetchProducts } from "@/app/lib/data";
-import { deleteProduct } from "@/app/lib/actions";
+import { fetchAssets } from "@/app/lib/data";
+import { deleteAsset } from "@/app/lib/actions";
 
-const ProductsPage = async ({ searchParams }) => {
+const AssetsPage = async ({ searchParams }) => {
   const q = searchParams?.q || "";
   const page = searchParams?.page || 1;
-  const { count, products } = await fetchProducts(q, page);
-
+  const { count, assets } = await fetchAssets(q, page);
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        <Search placeholder="Search for a product..." />
-        <Link href="/dashboard/products/add">
+        <Search placeholder="Search for a asset..." />
+        <Link href="/dashboard/assets/add">
           <button className={styles.addButton}>Add New</button>
         </Link>
       </div>
@@ -26,40 +25,41 @@ const ProductsPage = async ({ searchParams }) => {
             <td>Brand</td>
             <td>Model</td>
             <td>Status</td>
+            <td>Department</td>
             <td>User</td>
             <td>Action</td>
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
-            <tr key={product.id}>
+          {assets.map((asset) => (
+            <tr key={asset.id}>
               <td>
-                <div className={styles.product}>
-                  <Image
-                    src={product.img || "/insert-image.png"}
+                <div className={styles.asset}>
+                  {/* <Image
+                    src={asset.img || "/insert-image.png"}
                     alt=""
                     width={40}
                     height={40}
-                    className={styles.productImage}
-                  />
-                  {product.title}
+                    className={styles.assetImage}
+                  /> */}
+                  {asset.assetType}
                 </div>
               </td>
               
-              {/* <td>{product.createdAt?.toString().slice(4, 16)}</td> */}
-              <td>{product.brand}</td>
-              <td>{product.used}</td>
-              <td>{product.defective}</td>
-              <td>{product.stock}</td>
+              <td>{asset.brand}</td>
+              <td>{asset.assetModel}</td>
+              <td>{asset.status}</td>
+              <td>{asset.dept}</td>
+              <td>{asset.user}</td>
               <td>
                 <div className={styles.buttons}>
-                  <Link href={`/dashboard/products/${product.id}`}>
+                  <Link href={`/dashboard/assets/${asset.id}`}>
                     <button className={`${styles.button} ${styles.view}`}>
                       View
                     </button>
                   </Link>
-                  <form action={deleteProduct}>
-                    <input type="hidden" name="id" value={product.id} />
+                  <form action={deleteAsset}>
+                    <input type="hidden" name="id" value={asset.id} />
                     <button className={`${styles.button} ${styles.delete}`}>
                       Delete
                     </button>
@@ -75,4 +75,4 @@ const ProductsPage = async ({ searchParams }) => {
   );
 };
 
-export default ProductsPage;
+export default AssetsPage;

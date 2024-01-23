@@ -70,9 +70,9 @@ const employeeSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const productSchema = new mongoose.Schema(
+const assetSchema = new mongoose.Schema(
   {
-    title: {
+    assetTag: {
       type: String,
       required: true,
       unique: true,
@@ -81,42 +81,39 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    prodmodel:{
+    assetModel:{
       type: String,
       required: false,
     },
-    desc: {
+    serial: {
       type: String,
       required: false,
     },
-    used: {
+    assetType: {
+      type: String,
+      required: false,
+    },
+    dept: {
+      type: String,
+      required: false,
+    },
+    user: {
+      type: String,
+      required: false,
+    },
+    status: {
+      type: String,
+      required: false,
+    },
+    quantity: {
       type: Number,
       required: true,
-      min: 0,
-    },
-    defective: {
-      type: Number,
-      required: true,
-      min: 0,
-    },
-    stock: {
-      type: Number,
-      required: true,
-      min: 0,
-    },
-    img: {
-      type: String,
-    },
-    color: {
-      type: String,
-    },
-    size: {
-      type: String,
+      min: 1,
     },
   },
   { timestamps: true }
 );
 
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
-export const Product = mongoose.models.Product || mongoose.model("Product", productSchema);
+export const Asset = mongoose.models.Asset || mongoose.model("Asset", assetSchema);
 export const Employee = mongoose.models.Employee || mongoose.model("Employee", employeeSchema);

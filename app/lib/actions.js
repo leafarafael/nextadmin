@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { Employee, Product, User } from "./models";
+import { Employee, Asset, User } from "./models";
 import { connectToDB } from "./utils";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
@@ -69,52 +69,54 @@ export const updateUser = async (formData) => {
   redirect("/dashboard/users");
 };
 
-export const addProduct = async (formData) => {
-  const { title, brand, prodmodel, desc, used, defective, stock, color, size } =
+export const addAsset = async (formData) => {
+  const { assetTag, brand, assetModel, serial, assetType, dept, user, status, quantity, desc } =
     Object.fromEntries(formData);
 
   try {
     connectToDB();
 
-    const newProduct = new Product({
-      title,
-      brand,
-      prodmodel,
-      desc,
-      used,
-      defective,
-      stock,
-      color,
-      size,
+    const newAsset = new Asset({
+      assetTag, 
+      brand, 
+      assetModel, 
+      serial, 
+      assetType, 
+      dept,
+      user, 
+      status, 
+      quantity, 
+      desc
     });
 
-    await newProduct.save();
+    await newAsset.save();
   } catch (err) {
     console.log(err);
-    throw new Error("Failed to create product!");
+    throw new Error("Failed to create asset!");
   }
 
-  revalidatePath("/dashboard/products");
-  redirect("/dashboard/products");
+  revalidatePath("/dashboard/assets");
+  redirect("/dashboard/assets");
 };
 
-export const updateProduct = async (formData) => {
-  const { id, title, brand, prodmodel, desc, used, defective, stock, color, size } =
+export const updateAsset = async (formData) => {
+  const { id, assetTag, brand, assetModel, serial, assetType, dept, user, status, quantity, desc } =
     Object.fromEntries(formData);
 
   try {
     connectToDB();
 
     const updateFields = {
-      title,
-      brand,
-      prodmodel,
-      desc,
-      used,
-      defective,
-      stock,
-      color,
-      size,
+      assetTag, 
+      brand, 
+      assetModel, 
+      serial, 
+      assetType, 
+      dept,
+      user, 
+      status, 
+      quantity, 
+      desc
     };
 
     Object.keys(updateFields).forEach(
@@ -122,20 +124,20 @@ export const updateProduct = async (formData) => {
         (updateFields[key] === "" || undefined) && delete updateFields[key]
     );
 
-    await Product.findByIdAndUpdate(id, updateFields);
+    await Asset.findByIdAndUpdate(id, updateFields);
   } catch (err) {
     console.log(err);
-    throw new Error("Failed to update product!");
+    throw new Error("Failed to update asset!");
   }
 
-  revalidatePath("/dashboard/products");
-  redirect("/dashboard/products");
+  revalidatePath("/dashboard/assets");
+  redirect("/dashboard/assets");
 };
 
 
 
 export const addEmployee = async (formData) => {
-  const { name, laptop, charger, bag, pen } =
+  const { name, isLaptopChecked, charger, bag, pen } =
     Object.fromEntries(formData);
 
   try {
@@ -143,7 +145,7 @@ export const addEmployee = async (formData) => {
 
     const newEmployee = new Employee({
       name, 
-      laptop, 
+      laptop: isLaptopChecked, 
       charger, 
       bag,
       pen,
@@ -203,18 +205,18 @@ export const deleteUser = async (formData) => {
   revalidatePath("/dashboard/users");
 };
 
-export const deleteProduct = async (formData) => {
+export const deleteAsset = async (formData) => {
   const { id } = Object.fromEntries(formData);
 
   try {
     connectToDB();
-    await Product.findByIdAndDelete(id);
+    await Asset.findByIdAndDelete(id);
   } catch (err) {
     console.log(err);
-    throw new Error("Failed to delete product!");
+    throw new Error("Failed to delete asset!");
   }
 
-  revalidatePath("/dashboard/products");
+  revalidatePath("/dashboard/assets");
 };
 
 export const deleteEmployee = async (formData) => {

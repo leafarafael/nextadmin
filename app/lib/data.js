@@ -1,4 +1,4 @@
-import { Product, User, Employee } from "./models";
+import { Asset, User, Employee } from "./models";
 import { connectToDB } from "./utils";
 
 export const fetchUsers = async (q, page) => {
@@ -31,37 +31,55 @@ export const fetchUser = async (id) => {
   }
 };
 
-export const fetchProducts = async (q, page) => {
+export const fetchAssets = async (q, page) => {
   console.log(q);
   const regex = new RegExp(q, "i");
-
   const ITEM_PER_PAGE = 10;
 
   try {
     connectToDB();
-    const count = await Product.find({ title: { $regex: regex } }).count();
-    const products = await Product.find({ title: { $regex: regex } })
+    const count = await Asset.find({ assetType: { $regex: regex } }).count();
+    const assets = await Asset.find({ assetType: { $regex: regex } })
       .limit(ITEM_PER_PAGE)
       .skip(ITEM_PER_PAGE * (page - 1));
-    return { count, products };
+    return { count, assets };
   } catch (err) {
     console.log(err);
-    throw new Error("Failed to fetch products!");
+    throw new Error("Failed to fetch assets!");
   }
 };
 
-export const fetchProduct = async (id) => {
+export const fetchAsset = async (id) => {
+  console.log(id);
   try {
     connectToDB();
-    const product = await Product.findById(id);
-    return product;
+    const asset = await Asset.findById(id);
+    return asset;
   } catch (err) {
     console.log(err);
-    throw new Error("Failed to fetch product!");
+    throw new Error("Failed to fetch asset!");
   }
 };
 
 
+export const fetchAllEmployees = async (q, page) => {
+  const regex = new RegExp(q, "i");
+  const sortField = 'name'; 
+  const sortDirection = 'asc'; 
+  const sortOptions = {};
+  sortOptions[sortField] = sortDirection === 'asc' ? 1 : -1;
+
+  try {
+    connectToDB();
+    const count = await Employee.find({ name: { $regex: regex } }).count();
+    const employees = await Employee.find({ name: { $regex: regex } })
+      .sort(sortOptions)
+    return { count, employees };
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch employees!");
+  }
+};
 
 export const fetchEmployees = async (q, page) => {
   console.log(q);

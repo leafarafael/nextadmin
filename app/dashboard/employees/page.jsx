@@ -23,6 +23,7 @@ const EmployeesPage = async ({ searchParams }) => {
         <thead>
           <tr>
             <td>Name</td>
+            <td>Email</td>
             <td>Laptop</td>
             <td>Charger</td>
             <td>Bag</td>
@@ -47,6 +48,7 @@ const EmployeesPage = async ({ searchParams }) => {
               </td>
               
               {/* <td>{employee.createdAt?.toString().slice(4, 16)}</td> */}
+           
               <td>{employee.laptop}</td>
               <td>{employee.charger}</td>
               <td>{employee.bag}</td>
