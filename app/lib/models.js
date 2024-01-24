@@ -110,6 +110,10 @@ const assetSchema = new mongoose.Schema(
       required: true,
       min: 1,
     },
+    description: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true }
 );

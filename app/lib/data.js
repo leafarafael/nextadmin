@@ -38,8 +38,12 @@ export const fetchAssets = async (q, page) => {
 
   try {
     connectToDB();
-    const count = await Asset.find({ assetType: { $regex: regex } }).count();
-    const assets = await Asset.find({ assetType: { $regex: regex } })
+    const searchFields = ["assetType", "brand", "assetModel", "status", "dept", "user"]; 
+    const searchConditions = searchFields.map(field => ({ [field]: { $regex: regex } }));
+
+
+    const count = await Asset.find({ $or: searchConditions  }).count();
+    const assets = await Asset.find({ $or: searchConditions })
       .limit(ITEM_PER_PAGE)
       .skip(ITEM_PER_PAGE * (page - 1));
     return { count, assets };

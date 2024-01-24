@@ -63,11 +63,13 @@ const AddAssetPage = async () => {
         <input type="number"  placeholder="Quantity" name="quantity"/>
 
         <textarea
-          name="desc"
-          id="desc"
+          name="description"
+          id="description"
           rows="4"
           placeholder="Description"
         ></textarea>
+
+
         <button type="submit">Submit</button>
       </form>
     </div>

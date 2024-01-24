@@ -70,7 +70,7 @@ export const updateUser = async (formData) => {
 };
 
 export const addAsset = async (formData) => {
-  const { assetTag, brand, assetModel, serial, assetType, dept, user, status, quantity, desc } =
+  const { assetTag, brand, assetModel, serial, assetType, dept, user, status, quantity, description } =
     Object.fromEntries(formData);
 
   try {
@@ -86,7 +86,7 @@ export const addAsset = async (formData) => {
       user, 
       status, 
       quantity, 
-      desc
+      description
     });
 
     await newAsset.save();
@@ -100,7 +100,7 @@ export const addAsset = async (formData) => {
 };
 
 export const updateAsset = async (formData) => {
-  const { id, assetTag, brand, assetModel, serial, assetType, dept, user, status, quantity, desc } =
+  const { id, assetTag, brand, assetModel, serial, assetType, dept, user, status, quantity, description } =
     Object.fromEntries(formData);
 
   try {
@@ -116,7 +116,7 @@ export const updateAsset = async (formData) => {
       user, 
       status, 
       quantity, 
-      desc
+      description
     };
 
     Object.keys(updateFields).forEach(

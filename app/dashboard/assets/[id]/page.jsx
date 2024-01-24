@@ -28,8 +28,20 @@ const SingleAssetPage = async ({ params }) => {
           <input type="text" name="assetModel" defaultValue={asset.assetModel} />
           <label>Serial</label>
           <input type="text" name="serial" defaultValue={asset.serial} />
-          <label>Model</label>
-          <input type="text" name="assetType" defaultValue={asset.assetType} />
+
+          <label>Type</label>
+          <select name="assetType" id="assetType">
+            <option value={asset.assetType} disabled selected>{asset.assetType}</option>
+            <option value="System Unit">System Unit</option>
+            <option value="Monitor">Monitor</option>
+            <option value="Mouse">Mouse</option>
+            <option value="Keyboard">Keyboard</option>
+            <option value="Telephone">Telephone</option>
+            <option value="Switch">Switch</option>
+            <option value="Router">Router</option>
+            <option value="Access Point">Access Point</option>
+            <option value="Others">Others</option>
+          </select>     
           
           <label>Department</label>
           <select name="dept" id="dept">
@@ -59,6 +71,7 @@ const SingleAssetPage = async ({ params }) => {
           <label>Quantity</label>
           <input type="number" name="quantity" defaultValue={asset.quantity} />
           
+          <label>Current User</label>
           <select name="user" id="user">
             <option value={asset.user} disabled selected>{asset.user}</option>
             {employees.map((employee) => (
@@ -71,8 +84,10 @@ const SingleAssetPage = async ({ params }) => {
             name="desc"
             id="desc"
             rows="10"
-            placeholder={asset.desc}
-          ></textarea>
+            defaultValue={asset.description}
+          >
+          </textarea>
+
           <button>Update</button>
         </form>
       </div>
