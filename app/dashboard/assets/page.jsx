@@ -5,11 +5,24 @@ import Search from "@/app/ui/dashboard/search/search";
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
 import { fetchAssets } from "@/app/lib/data";
 import { deleteAsset } from "@/app/lib/actions";
+import AssetsDeleteButton from "@/app/ui/dashboard/delete/deleteButton";
+
 
 const AssetsPage = async ({ searchParams }) => {
   const q = searchParams?.q || "";
   const page = searchParams?.page || 1;
   const { count, assets } = await fetchAssets(q, page);
+
+  const handleDelete = async (id) => {
+    const confirmed = confirm("Are you sure you want to delete this asset?");
+
+    if (confirmed) {
+      // User confirmed, proceed with the deletion
+      await deleteAsset(id);
+      // Fetch assets again or update the state accordingly
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -58,12 +71,7 @@ const AssetsPage = async ({ searchParams }) => {
                       View
                     </button>
                   </Link>
-                  <form action={deleteAsset}>
-                    <input type="hidden" name="id" value={asset.id} />
-                    <button className={`${styles.button} ${styles.delete}`}>
-                      Delete
-                    </button>
-                  </form>
+                  <AssetsDeleteButton id={asset.id} />
                 </div>
               </td>
             </tr>
