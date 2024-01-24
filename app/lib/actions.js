@@ -137,7 +137,7 @@ export const updateAsset = async (formData) => {
 
 
 export const addEmployee = async (formData) => {
-  const { name, isLaptopChecked, charger, bag, pen } =
+  const { name, laptop, charger, bag, pen } =
     Object.fromEntries(formData);
 
   try {
@@ -145,7 +145,7 @@ export const addEmployee = async (formData) => {
 
     const newEmployee = new Employee({
       name, 
-      laptop: isLaptopChecked, 
+      laptop, 
       charger, 
       bag,
       pen,

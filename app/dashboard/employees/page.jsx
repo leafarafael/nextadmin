@@ -23,7 +23,6 @@ const EmployeesPage = async ({ searchParams }) => {
         <thead>
           <tr>
             <td>Name</td>
-            <td>Email</td>
             <td>Laptop</td>
             <td>Charger</td>
             <td>Bag</td>
@@ -49,10 +48,10 @@ const EmployeesPage = async ({ searchParams }) => {
               
               {/* <td>{employee.createdAt?.toString().slice(4, 16)}</td> */}
            
-              <td>{employee.laptop}</td>
-              <td>{employee.charger}</td>
-              <td>{employee.bag}</td>
-              <td>{employee.pen}</td>
+              <td>{employee.laptop ? "Yes" : "No"}</td>
+              <td>{employee.charger ? "Yes" : "No"}</td>
+              <td>{employee.bag ? "Yes" : "No"}</td>
+              <td>{employee.pen ? "Yes" : "No"}</td>
               <td>
                 <div className={styles.buttons}>
                   <Link href={`/dashboard/employees/${employee.id}`}>

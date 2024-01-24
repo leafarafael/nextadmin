@@ -47,20 +47,20 @@ const employeeSchema = new mongoose.Schema(
       required: true,
     },
     laptop: {
-      type: String,
-      required: false,
+      type: Boolean,
+      default: false,
     },
     charger: {
-      type: String,
-      required: false,
+      type: Boolean,
+      default: false,
     },
     bag: {
-      type: String,
-      required: false,
+      type: Boolean,
+      default: false,
     },
     pen: {
-      type: String,
-      required: false,
+      type: Boolean,
+      default: false,
     },
     note: {
       type: String,

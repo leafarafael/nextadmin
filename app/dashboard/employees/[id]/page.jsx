@@ -22,33 +22,29 @@ const SingleEmployeePage = async ({ params }) => {
           <input type="text" name="name" defaultValue={employee.name} />
           
           <label>Laptop</label>
-          <input type="checkbox" id="laptop" name="laptop"  defaultChecked={employee.laptop} />
+          {/* <input type="checkbox" id="laptop" name="laptop"  defaultChecked={employee.laptop} /> */}
 
-          {/* <select name="laptop" id="laptop">
-            <option value={employee.laptop} selected hidden>{employee.laptop}</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select> */}
+          <select name="laptop" id="laptop">
+            <option value={true} selected={employee.laptop}>Yes</option>
+            <option value={false} selected={!employee.laptop}>No</option>
+          </select>
 
           <label>Charger</label>
           <select name="charger" id="charger">
-            <option value={employee.charger} selected hidden>{employee.charger}</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+            <option value={true} selected={employee.charger}>Yes</option>
+            <option value={false} selected={!employee.charger}>No</option>
           </select>
 
           <label>Bag</label>
           <select name="bag" id="bag">
-            <option value={employee.bag} selected hidden>{employee.bag}</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+            <option value={true} selected={employee.bag}>Yes</option>
+            <option value={false} selected={!employee.bag}>No</option>
           </select>
 
           <label>Pen</label>
           <select name="pen" id="pen">
-            <option value={employee.pen} selected hidden>{employee.pen}</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+            <option value={true} selected={employee.pen}>Yes</option>
+            <option value={false} selected={!employee.pen}>No</option>
           </select>
     
 {/*       

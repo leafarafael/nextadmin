@@ -21,33 +21,33 @@ const AddEmployeePage = () => {
         <label for="laptop">Laptop</label>
         {/* <input type="checkbox" id="laptop" name="laptop" value="true"/> */}
 
-        <input
+        {/* <input
         type="checkbox"
         id="laptop"
         name="laptop"
         checked={isLaptopChecked}
         onChange={handleCheckboxChange}
-      />
+      /> */}
         
-        {/* <select name="laptop" id="laptop">
-            <option value="" disabled selected>Laptop</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-        </select> */}
+        <select name="laptop" id="laptop">
+        <option value={false}>Laptop</option>
+          <option value={true}>Yes</option>
+          <option value={false}>No</option>
+        </select>
         <select name="charger" id="charger">
-            <option value="" disabled selected>Charger</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+          <option value={false}>Charger</option>
+          <option value={true}>Yes</option>
+          <option value={false}>No</option>
         </select>
         <select name="bag" id="bag">
-            <option value="" disabled selected>Bag</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+          <option value={false}>Bag</option>
+          <option value={true}>Yes</option>
+          <option value={false}>No</option>
         </select>
         <select name="pen" id="pen">
-            <option value="" disabled selected>Pen</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+        <option value={false}>Pen</option>
+          <option value={true}>Yes</option>
+          <option value={false}>No</option>
         </select>
 
         <textarea
