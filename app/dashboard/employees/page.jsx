@@ -23,6 +23,7 @@ const EmployeesPage = async ({ searchParams }) => {
         <thead>
           <tr>
             <td>Name</td>
+            <td>Position</td>
             <td>Laptop</td>
             <td>Charger</td>
             <td>Bag</td>
@@ -33,7 +34,7 @@ const EmployeesPage = async ({ searchParams }) => {
         <tbody>
           {employees.map((employee) => (
             <tr key={employee.id}>
-              <td>
+              {/* <td>
                 <div className={styles.employee}>
                   <Image
                     src={employee.img || "/insert-image.png"}
@@ -42,12 +43,13 @@ const EmployeesPage = async ({ searchParams }) => {
                     height={40}
                     className={styles.employeeImage}
                   />
-                  {employee.name}
+             
                 </div>
-              </td>
+              </td> */}
               
+              <td>{employee.name}</td>
               {/* <td>{employee.createdAt?.toString().slice(4, 16)}</td> */}
-           
+              <td>{employee.position}</td>
               <td>{employee.laptop ? "Yes" : "No"}</td>
               <td>{employee.charger ? "Yes" : "No"}</td>
               <td>{employee.bag ? "Yes" : "No"}</td>
@@ -59,12 +61,12 @@ const EmployeesPage = async ({ searchParams }) => {
                       View
                     </button>
                   </Link>
-                  <form action={deleteEmployee}>
+                  {/* <form action={deleteEmployee}>
                     <input type="hidden" name="id" value={employee.id} />
                     <button className={`${styles.button} ${styles.delete}`}>
                       Delete
                     </button>
-                  </form>
+                  </form> */}
                 </div>
               </td>
             </tr>

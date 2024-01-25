@@ -70,7 +70,8 @@ export const updateUser = async (formData) => {
 };
 
 export const addAsset = async (formData) => {
-  const { assetTag, brand, assetModel, serial, assetType, dept, user, status, quantity, description } =
+  const { assetTag, brand, assetModel, serial, assetType, 
+    dept, user, status, quantity, ipadd, price, dop, description } =
     Object.fromEntries(formData);
 
   try {
@@ -85,7 +86,10 @@ export const addAsset = async (formData) => {
       dept,
       user, 
       status, 
-      quantity, 
+      quantity,
+      ipadd, 
+      price, 
+      dop, 
       description
     });
 
@@ -100,7 +104,8 @@ export const addAsset = async (formData) => {
 };
 
 export const updateAsset = async (formData) => {
-  const { id, assetTag, brand, assetModel, serial, assetType, dept, user, status, quantity, description } =
+  const { id, assetTag, brand, assetModel, serial, assetType, 
+    dept, user, status, quantity, ipadd, price, dop, description } =
     Object.fromEntries(formData);
 
   try {
@@ -116,6 +121,9 @@ export const updateAsset = async (formData) => {
       user, 
       status, 
       quantity, 
+      ipadd, 
+      price, 
+      dop, 
       description
     };
 
@@ -137,7 +145,8 @@ export const updateAsset = async (formData) => {
 
 
 export const addEmployee = async (formData) => {
-  const { name, laptop, charger, bag, pen } =
+  const domain = "@unitedschoolbaniyas.ae"
+  const { name, email, position, laptop, charger, bag, pen } =
     Object.fromEntries(formData);
 
   try {
@@ -145,6 +154,8 @@ export const addEmployee = async (formData) => {
 
     const newEmployee = new Employee({
       name, 
+      email: name.toLowerCase() + domain, 
+      position,
       laptop, 
       charger, 
       bag,
@@ -162,7 +173,8 @@ export const addEmployee = async (formData) => {
 };
 
 export const updateEmployee = async (formData) => {
-  const { id, name, laptop, charger, bag, pen  } =
+  const domain = "@unitedschoolbaniyas.ae"
+  const { id, name, position, laptop, charger, bag, pen  } =
     Object.fromEntries(formData);
 
   try {
@@ -170,6 +182,8 @@ export const updateEmployee = async (formData) => {
 
     const updateFields = {
       name, 
+      email: name.toLowerCase() + domain, 
+      position,
       laptop, 
       charger, 
       bag,

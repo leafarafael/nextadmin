@@ -61,6 +61,9 @@ const AddAssetPage = async () => {
         </select>
         
         <input type="number"  placeholder="Quantity" name="quantity"/>
+        <input type="text"  placeholder="IP Address" name="ipadd"/>
+        <input type="number"  placeholder="Price" name="price"/>
+        <input type="date"  placeholder="Date of Purchase" name="dop"/>
 
         <textarea
           name="description"
