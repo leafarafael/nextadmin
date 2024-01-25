@@ -39,11 +39,7 @@ const menuItems = [
         path: "/dashboard/assets",
         icon: <MdShoppingBag />,
       },
-      {
-        title: "Network Address",
-        path: "/dashboard",
-        icon: <MdShoppingBag />,
-      },
+
 
     ],
   },

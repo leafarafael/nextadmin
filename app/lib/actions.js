@@ -239,6 +239,6 @@ export const authenticate = async (prevState, formData) => {
   try {
     await signIn("credentials", { username, password });
   } catch (err) {
-    return "Wrong Credentials!";
+    return "Please refresh the page!";
   }
 };
