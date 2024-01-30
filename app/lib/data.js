@@ -88,7 +88,7 @@ export const fetchAllEmployees = async (q, page) => {
 export const fetchEmployees = async (q, page) => {
   console.log(q);
   const regex = new RegExp(q, "i");
-  const ITEM_PER_PAGE = 10;
+  const ITEM_PER_PAGE = 15;
   const sortField = 'name'; 
   const sortDirection = 'asc'; 
   const sortOptions = {};

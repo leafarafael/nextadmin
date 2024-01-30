@@ -73,7 +73,8 @@ const SingleEmployeePage = async ({ params }) => {
             name="note"
             id="note"
             rows="10"
-            placeholder={employee.note}
+            defaultValue
+            ={employee.note}
           ></textarea>
           <button>Update</button>
         </form>

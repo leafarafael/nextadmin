@@ -146,7 +146,7 @@ export const updateAsset = async (formData) => {
 
 export const addEmployee = async (formData) => {
   const domain = "@unitedschoolbaniyas.ae"
-  const { name, email, position, laptop, charger, bag, pen } =
+  const { name, position, laptop, charger, bag, pen, note } =
     Object.fromEntries(formData);
 
   try {
@@ -154,12 +154,13 @@ export const addEmployee = async (formData) => {
 
     const newEmployee = new Employee({
       name, 
-      email: name.toLowerCase() + domain, 
+      email: name.replace(/\s+/g, '').toLowerCase() + domain, 
       position,
       laptop, 
       charger, 
       bag,
       pen,
+      note
     });
 
     await newEmployee.save();
@@ -174,7 +175,7 @@ export const addEmployee = async (formData) => {
 
 export const updateEmployee = async (formData) => {
   const domain = "@unitedschoolbaniyas.ae"
-  const { id, name, position, laptop, charger, bag, pen  } =
+  const { id, name, position, laptop, charger, bag, pen, note  } =
     Object.fromEntries(formData);
 
   try {
@@ -182,12 +183,13 @@ export const updateEmployee = async (formData) => {
 
     const updateFields = {
       name, 
-      email: name.toLowerCase() + domain, 
+      email: name.replace(/\s+/g, '').toLowerCase() + domain, 
       position,
       laptop, 
       charger, 
       bag,
       pen,
+      note
     };
 
     Object.keys(updateFields).forEach(
