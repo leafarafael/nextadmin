@@ -76,7 +76,7 @@ const SingleEmployeePage = async ({ params }) => {
             defaultValue
             ={employee.note}
           ></textarea>
-          <button>Update</button>
+          {/* <button>Update</button> */}
         </form>
       </div>
     </div>

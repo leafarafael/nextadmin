@@ -39,7 +39,7 @@ const SingleUserPage = async ({ params }) => {
             <option value={true} selected={user.isActive}>Yes</option>
             <option value={false} selected={!user.isActive}>No</option>
           </select>
-          <button>Update</button>
+          <button disabled hidden>Update</button>
         </form>
       </div>
     </div>
