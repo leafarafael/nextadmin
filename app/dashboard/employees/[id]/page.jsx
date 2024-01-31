@@ -20,8 +20,10 @@ const SingleEmployeePage = async ({ params }) => {
       <div className={styles.formContainer}>
         <form action={updateEmployee} className={styles.form}>
           <input type="hidden" name="id" value={employee.id} />
-          <label>Name</label>
+          <label>First Name</label>
           <input type="text" name="name" defaultValue={employee.name} />
+          <label>Last Name</label>
+          <input type="text" name="lname" defaultValue={employee.lname} />
           <label>Email</label>
           <input type="text" defaultValue={employee.email} name="email" disabled/>
           <label>Position</label>
