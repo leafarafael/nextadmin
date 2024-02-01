@@ -34,7 +34,7 @@ export const fetchUser = async (id) => {
 export const fetchAssets = async (q, page) => {
   console.log(q);
   const regex = new RegExp(q, "i");
-  const ITEM_PER_PAGE = 10;
+  const ITEM_PER_PAGE = 15;
 
   try {
     connectToDB();
@@ -96,7 +96,7 @@ export const fetchEmployees = async (q, page) => {
 
   try {
     connectToDB();
-    const searchEmp = ["name", "position"]; 
+    const searchEmp = ["name", "lastName", "position"]; 
     const searchConditions = searchEmp.map(field => ({ [field]: { $regex: regex } }));
 
     const count = await Employee.find({ $or: searchConditions }).count();

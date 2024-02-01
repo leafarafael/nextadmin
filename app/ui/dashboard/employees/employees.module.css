@@ -27,6 +27,8 @@
 
   .table td{
     padding: 10px;
+    border-bottom: 1px solid #2c2d30;
+    width: calc(100%/7);
   }
   
   .employee{

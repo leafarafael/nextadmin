@@ -18,6 +18,7 @@ const AddEmployeePage = () => {
         
         <input type="text" placeholder="Name" name="name" required />
         <input type="text" placeholder="Email" disabled defaultValue="@unitedschoolbaniyas.ae" name="email" />
+        <input type="text" placeholder="Last Name" name="lastName"  />
         <select name="position" id="position">
           <option value="" disabled selected>Employee Postion</option>
           <option value="Admin">Admin</option>
@@ -36,6 +37,14 @@ const AddEmployeePage = () => {
         checked={isLaptopChecked}
         onChange={handleCheckboxChange}
       /> */}
+
+<select name="status" id="status">
+          <option value="" disabled selected>Employee Status</option>
+          <option value="Admin">For Approval</option>
+          <option value="Teacher">Signed</option>
+          <option value="Assistant">Resigned</option>
+          <option value="Cleaner">Terminated</option>
+        </select>
         
         <select name="laptop" id="laptop">
           <option value={false} disabled selected>Laptop</option>
@@ -43,13 +52,7 @@ const AddEmployeePage = () => {
           <option value={false}>No</option>
         </select>
 
-        <select name="status" id="status">
-          <option value="" disabled selected>Employee Status</option>
-          <option value="Admin">For Approval</option>
-          <option value="Teacher">Signed</option>
-          <option value="Assistant">Resigned</option>
-          <option value="Cleaner">Terminated</option>
-        </select>
+
         
         <select name="charger" id="charger">
           <option value={false} disabled selected>Charger</option>

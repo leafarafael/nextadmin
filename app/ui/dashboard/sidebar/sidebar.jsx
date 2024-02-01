@@ -24,11 +24,11 @@ const menuItems = [
         path: "/dashboard",
         icon: <MdDashboard />,
       },
-      {
-        title: "Users",
-        path: "/dashboard/users",
-        icon: <MdSupervisedUserCircle />,
-      },
+      // {
+      //   title: "Users",
+      //   path: "/dashboard/users",
+      //   icon: <MdSupervisedUserCircle />,
+      // },
       {
         title: "Employees",
         path: "/dashboard/employees",

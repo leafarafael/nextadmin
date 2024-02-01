@@ -20,13 +20,9 @@ const SingleEmployeePage = async ({ params }) => {
       <div className={styles.formContainer}>
         <form action={updateEmployee} className={styles.form}>
           <input type="hidden" name="id" value={employee.id} />
-          <label>First Name</label>
-          <input type="text" name="name" defaultValue={employee.name} />
-          <label>Last Name</label>
-          <input type="text" name="lname" defaultValue={employee.lname} />
-          <label>Email</label>
-          <input type="text" defaultValue={employee.email} name="email" disabled/>
-          <label>Position</label>
+          <input type="text" placeholder="First Name" name="name" defaultValue={employee.name} />
+          <input type="text" placeholder="Last Name" name="lastName" defaultValue={employee.lastName} />
+          <input type="text" placeholder="Email" defaultValue={employee.email} name="email" disabled/>
           <select name="position" id="position">
             <option value={employee.position} disabled selected>{employee.position}</option>
             <option value="Admin">Admin</option>
@@ -35,46 +31,31 @@ const SingleEmployeePage = async ({ params }) => {
             <option value="Cleaner">Cleaner</option>
             <option value="Driver">Driver</option>
           </select>
-          
-          <label>Laptop</label>
-          {/* <input type="checkbox" id="laptop" name="laptop"  defaultChecked={employee.laptop} /> */}
-
           <select name="laptop" id="laptop">
+            <option value="" disabled>School Laptop</option>
             <option value={true} selected={employee.laptop}>Yes</option>
             <option value={false} selected={!employee.laptop}>No</option>
           </select>
-
-          <label>Charger</label>
           <select name="charger" id="charger">
+            <option value="" disabled>Laptop Charger</option>
             <option value={true} selected={employee.charger}>Yes</option>
             <option value={false} selected={!employee.charger}>No</option>
           </select>
-
-          <label>Bag</label>
           <select name="bag" id="bag">
+            <option value="" disabled>Laptop Bag</option>
             <option value={true} selected={employee.bag}>Yes</option>
             <option value={false} selected={!employee.bag}>No</option>
           </select>
-
-          <label>Pen</label>
           <select name="pen" id="pen">
+            <option value="" disabled>Smartboard Pen</option>
             <option value={true} selected={employee.pen}>Yes</option>
             <option value={false} selected={!employee.pen}>No</option>
           </select>
-    
-{/*       
-          <label>Color</label>
-          <input
-            type="text"
-            name="color"
-            placeholder={product.color || "color"}
-          /> */}
-
-          <label>Note</label>
           <textarea
             name="note"
             id="note"
             rows="10"
+            placeholder="Additional Information"
             defaultValue
             ={employee.note}
           ></textarea>

@@ -36,6 +36,7 @@ const SingleAssetPage = async ({ params }) => {
             <option value="Monitor">Monitor</option>
             <option value="Mouse">Mouse</option>
             <option value="Keyboard">Keyboard</option>
+            <option value="Photocopier">Photocopier</option>
             <option value="Telephone">Telephone</option>
             <option value="Switch">Switch</option>
             <option value="Router">Router</option>
@@ -88,7 +89,7 @@ const SingleAssetPage = async ({ params }) => {
           >
           </textarea>
 
-          {/* <button >Update</button> */}
+          {/* <button>Update</button> */}
         </form>
       </div>
     </div>

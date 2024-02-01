@@ -22,7 +22,8 @@ const EmployeesPage = async ({ searchParams }) => {
       <table className={styles.table}>
         <thead>
           <tr>
-            <td>Name</td>
+            <td>First Name</td>
+            <td>Last Name</td>
             <td>Position</td>
             <td>Laptop</td>
             <td>Charger</td>
@@ -48,6 +49,8 @@ const EmployeesPage = async ({ searchParams }) => {
               </td> */}
               
               <td>{employee.name}</td>
+              <td>{employee.lastName}</td>
+
               {/* <td>{employee.createdAt?.toString().slice(4, 16)}</td> */}
               <td>{employee.position}</td>
               <td>{employee.laptop ? "Yes" : "No"}</td>
