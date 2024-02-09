@@ -5,8 +5,13 @@ import Search from "@/app/ui/dashboard/search/search";
 import styles from "@/app/ui/dashboard/users/users.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { auth } from "@/app/auth";
 
 const UsersPage = async ({ searchParams }) => {
+  const { user } = await auth();
+  if (!user || !user.isAdmin) {
+    return null; 
+  }
   const q = searchParams?.q || "";
   const page = searchParams?.page || 1;
   const { count, users } = await fetchUsers(q, page);
@@ -56,12 +61,12 @@ const UsersPage = async ({ searchParams }) => {
                       View
                     </button>
                   </Link>
-                  <form action={deleteUser}>
+                  {/* <form action={deleteUser}>
                     <input type="hidden" name="id" value={(user.id)} />
-                    <button className={`${styles.button} ${styles.delete}`} disabled hidden>
+                    <button className={`${styles.button} ${styles.delete}`} >
                       Delete
                     </button>
-                  </form>
+                  </form> */}
                 </div>
               </td>
             </tr>

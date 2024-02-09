@@ -5,8 +5,13 @@ import Search from "@/app/ui/dashboard/search/search";
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
 import { fetchEmployees } from "@/app/lib/data";
 import { deleteEmployee } from "@/app/lib/actions";
+import { auth } from "@/app/auth";
 
 const EmployeesPage = async ({ searchParams }) => {
+  const { user } = await auth();
+  if (!user || !user.isAdmin) {
+    return null; 
+  }
   const q = searchParams?.q || "";
   const page = searchParams?.page || 1;
   const { count, employees } = await fetchEmployees(q, page);

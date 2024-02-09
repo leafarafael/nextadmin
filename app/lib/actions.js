@@ -213,6 +213,7 @@ export const deleteUser = async (formData) => {
   const { id } = Object.fromEntries(formData);
 
   try {
+       
     connectToDB();
     await User.findByIdAndDelete(id);
   } catch (err) {

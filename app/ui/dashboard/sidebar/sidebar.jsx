@@ -24,15 +24,17 @@ const menuItems = [
         path: "/dashboard",
         icon: <MdDashboard />,
       },
-      // {
-      //   title: "Users",
-      //   path: "/dashboard/users",
-      //   icon: <MdSupervisedUserCircle />,
-      // },
+      {
+        title: "Users",
+        path: "/dashboard/users",
+        icon: <MdSupervisedUserCircle />,
+        adminOnly: true
+      },
       {
         title: "Employees",
         path: "/dashboard/employees",
         icon: <MdShoppingBag />,
+        adminOnly: true,
       },
       {
         title: "Assets",
@@ -82,6 +84,7 @@ const menuItems = [
 
 const Sidebar = async () => {
   const { user } = await auth();
+  const isAdmin = user.isAdmin; 
   return (
     <div className={styles.container}>
       <div className={styles.user}>
@@ -94,7 +97,7 @@ const Sidebar = async () => {
         />
         <div className={styles.userDetail}>
           <span className={styles.username}>{user.username}</span>
-          <span className={styles.userTitle}>Administrator</span>
+          <span className={styles.userTitle}>{isAdmin? "Administrator" : "User"}</span>
         </div>
       </div>
       <ul className={styles.list}>
@@ -102,7 +105,7 @@ const Sidebar = async () => {
           <li key={cat.title}>
             <span className={styles.cat}>{cat.title}</span>
             {cat.list.map((item) => (
-              <MenuLink item={item} key={item.title} />
+              <MenuLink item={item} key={item.title} disabled={!isAdmin && item.adminOnly} hidden={!isAdmin && item.adminOnly}/>
             ))}
           </li>
         ))}
