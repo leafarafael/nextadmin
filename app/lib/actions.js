@@ -257,6 +257,7 @@ export const authenticate = async (prevState, formData) => {
 
   try {
     await signIn("credentials", { username, password });
+
   } catch (err) {
     return "Please refresh the page!";
   }

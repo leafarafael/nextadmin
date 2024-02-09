@@ -84,6 +84,42 @@ export const fetchAllEmployees = async (q, page) => {
     throw new Error("Failed to fetch employees!");
   }
 };
+export const countAllEmployees = async () => {
+  try {
+    connectToDB();
+    const count = await Employee.countDocuments();
+    return count;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to count employees!");
+  }
+};
+
+export const countAllTeachers = async () => {
+  try {
+    connectToDB();
+    const count = await Employee.countDocuments({position: "Teacher" });
+    return count;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to count teachers!");
+  }
+};
+
+
+export const countAllAdmins = async () => {
+  try {
+    connectToDB();
+    const count = await Employee.countDocuments({position: "Admin"} );
+    return count;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to count admins!");
+  }
+};
+
+
+
 
 export const fetchEmployees = async (q, page) => {
   console.log(q);
@@ -111,6 +147,7 @@ export const fetchEmployees = async (q, page) => {
   }
 };
 
+
 export const fetchEmployee = async (id) => {
   try {
     connectToDB();
@@ -122,24 +159,56 @@ export const fetchEmployee = async (id) => {
   }
 };
 
-// DUMMY DATA
+
+const updateEmployeeCardNumber = async () => {
+  try {
+    const totalEmployeesCount = await countAllEmployees();
+    const totalTeacherCount = await countAllTeachers();
+    const totalAdminCount = await countAllAdmins();
+    const employeeCardIndex = cards.findIndex((card) => card.title === "Employee");
+    const teacherCardIndex = cards.findIndex((card) => card.title === "Teacher");
+    const adminCardIndex = cards.findIndex((card) => card.title === "Admin");
+
+    if (employeeCardIndex !== -1) {
+      cards[employeeCardIndex].number = totalEmployeesCount;
+    } else {
+      console.warn("Employee card not found in the 'cards' array.");
+    }
+
+    if (teacherCardIndex !== -1) {
+      cards[teacherCardIndex].number = totalTeacherCount;
+    } else {
+      console.warn("Teacher card not found in the 'cards' array.");
+    }
+
+    if (adminCardIndex !== -1) {
+      cards[adminCardIndex].number = totalAdminCount;
+    } else {
+      console.warn("Admin card not found in the 'cards' array.");
+    }
+  } catch (error) {
+    console.error("Error updating Employee card number:", error);
+  }
+};
+
+updateEmployeeCardNumber();
+
 
 export const cards = [
   {
     id: 1,
     title: "Employee",
-    number: 30,
-    change: 12,
+    number: 0,
   },
   {
     id: 2,
-    title: "Laptop",
+    title: "Teacher",
     number: 25,
     change: -2,
   },
   {
     id: 3,
-    title: "PC",
+    title: "Admin",
     number: 30,
     change: 18,
   },

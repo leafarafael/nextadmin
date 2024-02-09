@@ -46,18 +46,6 @@ const employeeSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    lastName: {
-      type: String,
-      required: false,
-    },
-    email:{
-      type: String,
-      required: false,
-    },
-    position:{
-      type: String,
-      required: false,
-    },
     laptop: {
       type: Boolean,
       default: false,
@@ -117,23 +105,10 @@ const assetSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    ipadd: {
-      type: String,
-      required: false,
-    },
     quantity: {
       type: Number,
-      required: false,
+      required: true,
       min: 1,
-    },
-    price: {
-      type: Number,
-      required: false,
-      min: 0,
-    },
-    dop: {
-      type: Date,
-      required: false,
     },
     description: {
       type: String,
