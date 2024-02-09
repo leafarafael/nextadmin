@@ -203,13 +203,11 @@ export const cards = [
   {
     id: 2,
     title: "Teacher",
-    number: 25,
-    change: -2,
+    number: 0,
   },
   {
     id: 3,
     title: "Admin",
-    number: 30,
-    change: 18,
+    number: 0,
   },
 ];
