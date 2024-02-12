@@ -1,11 +1,14 @@
 .container {
-    background-color: var(--bgSoft);
-    padding: 20px;
-    border-radius: 10px;
-    display: flex;
-    gap: 20px;
-    cursor: pointer;
-    width: 100%;
+  background-color: var(--bgSoft);
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+  width: calc(33.30% - 20px); /* Adjusted width for 3 cards per row */
+  flex-grow: 1; /* Allowing flex items to grow */
+  flex-shrink: 0; /* Preventing flex items from shrinking */
+
   }
   
   .container:hover{
@@ -28,10 +31,3 @@
     font-weight: 300;
   }
   
-  .positive {
-    color: lime;
-  }
-  
-  .negative {
-    color: red;
-  }

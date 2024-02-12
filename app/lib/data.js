@@ -165,7 +165,7 @@ const updateEmployeeCardNumber = async () => {
     const totalEmployeesCount = await countAllEmployees();
     const totalTeacherCount = await countAllTeachers();
     const totalAdminCount = await countAllAdmins();
-    const employeeCardIndex = cards.findIndex((card) => card.title === "Employee");
+    const employeeCardIndex = cards.findIndex((card) => card.title === "Employees");
     const teacherCardIndex = cards.findIndex((card) => card.title === "Teacher");
     const adminCardIndex = cards.findIndex((card) => card.title === "Admin");
 
@@ -193,11 +193,10 @@ const updateEmployeeCardNumber = async () => {
 
 updateEmployeeCardNumber();
 
-
 export const cards = [
   {
     id: 1,
-    title: "Employee",
+    title: "Employees",
     number: 0,
   },
   {
@@ -207,7 +206,69 @@ export const cards = [
   },
   {
     id: 3,
+    title: "Assistant",
+    number: 0,
+  },
+  {
+    id: 4,
     title: "Admin",
     number: 0,
   },
+  {
+    id: 5,
+    title: "Driver",
+    number: 0,
+  },
+  {
+    id: 6,
+    title: "Cleaner",
+    number: 0,
+  },
 ];
+
+const getLastDataChanges = async () => {
+  try {
+    connectToDB();
+    
+    // Find the last 5 updated users, employees, and assets
+    // const lastUsers = await User.find().sort({ updatedAt: -1 }).limit(1);
+    const lastEmployees = await Employee.find().sort({ updatedAt: -1 }).limit(2);
+    const lastAssets = await Asset.find().sort({ updatedAt: -1 }).limit(2);
+
+    const lastChanges = [];
+
+    // Add last user changes to the array
+    // lastUsers.forEach(user => {
+    //   lastChanges.push({ type: 'User', updatedAt: user.updatedAt });
+    // });
+
+    // Add last employee changes to the array
+    lastEmployees.forEach(employee => {
+      lastChanges.push({ type: 'Employee', updatedAt: employee.updatedAt });
+    });
+
+    // Add last asset changes to the array
+    lastAssets.forEach(asset => {
+      lastChanges.push({ type: 'Asset', updatedAt: asset.updatedAt });
+    });
+
+    // Sort the changes by updatedAt date in descending order
+    lastChanges.sort((a, b) => b.updatedAt - a.updatedAt);
+
+    return lastChanges;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to get last data changes!");
+  }
+};
+
+getLastDataChanges()
+  .then(lastChanges => {
+    console.log("Last 5 data changes:");
+    console.table(lastChanges.map((change, index) => ({
+      "#": index + 1,
+      "Type": change.type,
+      "Updated At": change.updatedAt
+    })));
+  })
+  .catch(err => console.error("Error:", err));
