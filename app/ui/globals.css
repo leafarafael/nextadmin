@@ -2,7 +2,7 @@
     --bg: #151c2c;
     --bgSoft: #182237;
     --text: white;
-    --textSoft: #b7bac1;
+    --textSoft: hsl(222, 7%, 74%);
   }
   
   * {
@@ -14,6 +14,7 @@
   body {
     background-color: var(--bg);
     color: var(--text);
+    font-family: 'Arial', sans-serif;
   }
   
   a {

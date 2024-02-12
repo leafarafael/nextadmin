@@ -46,6 +46,18 @@ const employeeSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    email:{
+      type: String,
+      required: false,
+    },
+    lastName:{
+      type: String,
+      required: false,
+    },
+    position:{
+      type: String,
+      required: false,
+    },
     laptop: {
       type: Boolean,
       default: false,
