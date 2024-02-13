@@ -226,11 +226,9 @@ export const cards = [
   },
 ];
 
-const getLastDataChanges = async () => {
+export const getLastDataChanges = async () => {
   try {
     connectToDB();
-    
-    // Find the last 5 updated users, employees, and assets
     // const lastUsers = await User.find().sort({ updatedAt: -1 }).limit(1);
     const lastEmployees = await Employee.find().sort({ updatedAt: -1 }).limit(2);
     const lastAssets = await Asset.find().sort({ updatedAt: -1 }).limit(2);
@@ -242,17 +240,14 @@ const getLastDataChanges = async () => {
     //   lastChanges.push({ type: 'User', updatedAt: user.updatedAt });
     // });
 
-    // Add last employee changes to the array
     lastEmployees.forEach(employee => {
-      lastChanges.push({ type: 'Employee', updatedAt: employee.updatedAt });
+      lastChanges.push({ type: 'Employee', name: employee.name, updatedAt: employee.updatedAt });
     });
 
-    // Add last asset changes to the array
     lastAssets.forEach(asset => {
-      lastChanges.push({ type: 'Asset', updatedAt: asset.updatedAt });
+      lastChanges.push({ type: 'Asset', assetType: asset.assetType, updatedAt: asset.updatedAt });
     });
 
-    // Sort the changes by updatedAt date in descending order
     lastChanges.sort((a, b) => b.updatedAt - a.updatedAt);
 
     return lastChanges;
@@ -268,6 +263,7 @@ getLastDataChanges()
     console.table(lastChanges.map((change, index) => ({
       "#": index + 1,
       "Type": change.type,
+      "Name": change.assetType || change.name,
       "Updated At": change.updatedAt
     })));
   })

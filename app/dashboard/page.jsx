@@ -15,7 +15,6 @@ const Dashboard = () => {
           ))}
         </div>
         <Transactions />
-        <Chart />
       </div>
       <div className={styles.side}>
         <Rightbar />

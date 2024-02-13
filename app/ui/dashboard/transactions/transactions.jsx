@@ -1,106 +1,43 @@
 import Image from "next/image";
 import styles from "./transactions.module.css";
+import { getLastDataChanges } from "@/app/lib/data";
 
-const Transactions = () => {
+const Transactions = ({ lastChanges }) => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Latest Transactions</h2>
       <table className={styles.table}>
         <thead>
           <tr>
+            <td>Type</td>
             <td>Name</td>
-            <td>Status</td>
-            <td>Date Hired</td>
-            <td>Position</td>
+            <td>Updated At</td>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <div className={styles.user}>
-                <Image
-                  src="/noavatar.png"
-                  alt=""
-                  width={40}
-                  height={40}
-                  className={styles.userImage}
-                />
-                John Doe
-              </div>
-            </td>
-            <td>
-              <span className={`${styles.status} ${styles.pending}`}>
-                Pending
-              </span>
-            </td>
-            <td>14.02.2024</td>
-            <td>Teacher</td>
-          </tr>
-          <tr>
-            <td>
-              <div className={styles.user}>
-                <Image
-                  src="/noavatar.png"
-                  alt=""
-                  width={40}
-                  height={40}
-                  className={styles.userImage}
-                />
-                John Doe
-              </div>
-            </td>
-            <td>
-              <span className={`${styles.status} ${styles.done}`}>Done</span>
-            </td>
-            <td>14.02.2024</td>
-            <td>Teacher</td>
-          </tr>
-          <tr>
-            <td>
-              <div className={styles.user}>
-                <Image
-                  src="/noavatar.png"
-                  alt=""
-                  width={40}
-                  height={40}
-                  className={styles.userImage}
-                />
-                John Doe
-              </div>
-            </td>
-            <td>
-              <span className={`${styles.status} ${styles.cancelled}`}>
-                Cancelled
-              </span>
-            </td>
-            <td>14.02.2024</td>
-            <td>Teacher</td>
-          </tr>
-          <tr>
-            <td>
-              <div className={styles.user}>
-                <Image
-                  src="/noavatar.png"
-                  alt=""
-                  width={40}
-                  height={40}
-                  className={styles.userImage}
-                />
-                John Doe
-              </div>
-            </td>
-            <td>
-              <span className={`${styles.status} ${styles.pending}`}>
-                Pending
-              </span>
-            </td>
-            <td>14.02.2024</td>
-            <td>Teacher</td>
-          </tr>
+          {lastChanges && lastChanges.map((change, index) => (
+            <tr key={index}>
+              <td>{change.type}</td>
+              <td>{change.assetType || change.name}</td>
+              <td>{change.updatedAt}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
   );
 };
+
+export async function getServerSideProps() {
+  try {
+    console.log("Fetching last data changes...");
+    const lastChanges = await getLastDataChanges(5); // Fetch last 5 data changes
+    console.log("Last data changes:", lastChanges);
+    return { props: { lastChanges } };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return { props: { lastChanges: [] } };
+  }
+}
 
 export default Transactions;
