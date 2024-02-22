@@ -146,7 +146,7 @@ export const updateAsset = async (formData) => {
 
 export const addEmployee = async (formData) => {
   const domain = "@unitedschoolbaniyas.ae"
-  const { name, lastName, position, laptop, charger, bag, pen, note } =
+  const { name, lastName, position, empStatus, laptop, charger, bag, pen, note } =
     Object.fromEntries(formData);
 
   try {
@@ -157,6 +157,7 @@ export const addEmployee = async (formData) => {
       lastName, 
       email: name.replace(/\s+/g, '').toLowerCase() + domain, 
       position,
+      empStatus,
       laptop, 
       charger, 
       bag,
@@ -176,7 +177,7 @@ export const addEmployee = async (formData) => {
 
 export const updateEmployee = async (formData) => {
   const domain = "@unitedschoolbaniyas.ae"
-  const { id, name, lastName, position, laptop, charger, bag, pen, note  } =
+  const { id, name, lastName, position, empStatus,laptop, charger, bag, pen, note  } =
     Object.fromEntries(formData);
 
   try {
@@ -187,6 +188,7 @@ export const updateEmployee = async (formData) => {
       lastName,
       email: name.replace(/\s+/g, '').toLowerCase() + domain, 
       position,
+      empStatus,
       laptop, 
       charger, 
       bag,

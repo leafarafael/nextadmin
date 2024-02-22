@@ -31,6 +31,13 @@ const SingleEmployeePage = async ({ params }) => {
             <option value="Cleaner">Cleaner</option>
             <option value="Driver">Driver</option>
           </select>
+          <select name="empStatus" id="empStatus">
+          <option value={employee.empStatus} disabled selected>{employee.empStatus}</option>
+          <option value="For Approval">For Approval</option>
+          <option value="Signed">Signed</option>
+          <option value="Resigned">Resigned</option>
+          <option value="Terminated">Terminated</option>
+        </select>
           <select name="laptop" id="laptop">
             <option value="" disabled>School Laptop</option>
             <option value={true} selected={employee.laptop}>Yes</option>

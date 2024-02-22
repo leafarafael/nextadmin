@@ -28,22 +28,12 @@ const AddEmployeePage = () => {
           <option value="Driver">Driver</option>
         </select>
         
-        {/* <input type="checkbox" id="laptop" name="laptop" value="true"/> */}
-
-        {/* <input
-        type="checkbox"
-        id="laptop"
-        name="laptop"
-        checked={isLaptopChecked}
-        onChange={handleCheckboxChange}
-      /> */}
-
-<select name="status" id="status">
+        <select name="empStatus" id="empStatus">
           <option value="" disabled selected>Employee Status</option>
-          <option value="Admin">For Approval</option>
-          <option value="Teacher">Signed</option>
-          <option value="Assistant">Resigned</option>
-          <option value="Cleaner">Terminated</option>
+          <option value="For Approval">For Approval</option>
+          <option value="Signed">Signed</option>
+          <option value="Resigned">Resigned</option>
+          <option value="Terminated">Terminated</option>
         </select>
         
         <select name="laptop" id="laptop">
@@ -52,8 +42,6 @@ const AddEmployeePage = () => {
           <option value={false}>No</option>
         </select>
 
-
-        
         <select name="charger" id="charger">
           <option value={false} disabled selected>Charger</option>
           <option value={true}>Yes</option>
@@ -69,8 +57,6 @@ const AddEmployeePage = () => {
           <option value={true}>Yes</option>
           <option value={false}>No</option>
         </select>
-
-
 
         <textarea
           name="note"

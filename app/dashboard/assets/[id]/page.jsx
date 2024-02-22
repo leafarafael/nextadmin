@@ -32,6 +32,7 @@ const SingleAssetPage = async ({ params }) => {
           <label>Type</label>
           <select name="assetType" id="assetType">
             <option value={asset.assetType} disabled selected>{asset.assetType}</option>
+            <option value="Laptop">Laptop</option>
             <option value="System Unit">System Unit</option>
             <option value="Monitor">Monitor</option>
             <option value="Mouse">Mouse</option>
@@ -76,7 +77,7 @@ const SingleAssetPage = async ({ params }) => {
           <select name="user" id="user">
             <option value={asset.user} disabled selected>{asset.user}</option>
             {employees.map((employee) => (
-              <option key={employee._id} value={employee.name}>{employee.name}</option>
+              <option key={employee._id} value={employee.name}>{employee.name} {employee.lastName}</option>
             ))}
          </select>
 

@@ -58,6 +58,10 @@ const employeeSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    empStatus:{
+      type: String,
+      required: false,
+    },
     laptop: {
       type: Boolean,
       default: false,

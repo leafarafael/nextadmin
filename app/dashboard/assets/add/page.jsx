@@ -13,6 +13,7 @@ const AddAssetPage = async () => {
 
         <select name="assetType" id="assetType">
           <option value="" disabled selected>Asset Type</option>
+          <option value="Laptop">Laptop</option>
           <option value="System Unit">System Unit</option>
           <option value="Monitor">Monitor</option>
           <option value="Mouse">Mouse</option>
@@ -59,7 +60,7 @@ const AddAssetPage = async () => {
         <select name="user" id="user">
           <option value="">Select user</option>
           {employees.map((employee) => (
-            <option key={employee._id} value={employee.name}>{employee.name}</option>
+            <option key={employee._id} value={employee.name}>{employee.name} {employee.lastName}</option>
           ))}
         </select>
         
