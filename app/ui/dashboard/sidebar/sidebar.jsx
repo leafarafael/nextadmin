@@ -84,9 +84,6 @@ const menuItems = [
 
 const Sidebar = async () => {
   const { user } = await auth();
-<<<<<<< Updated upstream
-  const isAdmin = user.isAdmin; 
-=======
   const isAdmin = user.isAdmin;
 
   const filteredMenuItems = menuItems.map(category => ({
@@ -95,7 +92,6 @@ const Sidebar = async () => {
   }));
 
 
->>>>>>> Stashed changes
   return (
     <div className={styles.container}>
       <div className={styles.user}>
