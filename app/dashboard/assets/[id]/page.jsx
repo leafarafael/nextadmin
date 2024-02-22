@@ -89,7 +89,7 @@ const SingleAssetPage = async ({ params }) => {
           >
           </textarea>
 
-          {/* <button>Update</button> */}
+          <button>Update</button>
         </form>
       </div>
     </div>

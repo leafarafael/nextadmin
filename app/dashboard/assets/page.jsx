@@ -17,7 +17,7 @@ const AssetsPage = async ({ searchParams }) => {
       <div className={styles.top}>
         <Search placeholder="Search for a asset..." />
         <Link href="/dashboard/assets/add">
-          {/* <button className={styles.addButton}>Add New</button> */}
+          <button className={styles.addButton}>Add New</button>
         </Link>
       </div>
       <table className={styles.table}>

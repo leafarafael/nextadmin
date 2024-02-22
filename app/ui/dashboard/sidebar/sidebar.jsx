@@ -84,7 +84,18 @@ const menuItems = [
 
 const Sidebar = async () => {
   const { user } = await auth();
+<<<<<<< Updated upstream
   const isAdmin = user.isAdmin; 
+=======
+  const isAdmin = user.isAdmin;
+
+  const filteredMenuItems = menuItems.map(category => ({
+    ...category,
+    list: category.list.filter(item => isAdmin || !item.adminOnly)
+  }));
+
+
+>>>>>>> Stashed changes
   return (
     <div className={styles.container}>
       <div className={styles.user}>
@@ -101,7 +112,7 @@ const Sidebar = async () => {
         </div>
       </div>
       <ul className={styles.list}>
-        {menuItems.map((cat) => (
+        {filteredMenuItems.map((cat) => (
           <li key={cat.title}>
             <span className={styles.cat}>{cat.title}</span>
             {cat.list.map((item) => (
