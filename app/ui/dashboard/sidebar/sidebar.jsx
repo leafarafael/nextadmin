@@ -41,7 +41,11 @@ const menuItems = [
         path: "/dashboard/assets",
         icon: <MdShoppingBag />,
       },
-
+      {
+        title: "Accounts",
+        path: "/dashboard/accounts",
+        icon: <MdShoppingBag />,
+      },
 
     ],
   },

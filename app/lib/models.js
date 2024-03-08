@@ -126,6 +126,15 @@ const assetSchema = new mongoose.Schema(
       required: true,
       min: 1,
     },
+    price:{
+      type: Number,
+      required: false,
+      min: 0,
+    },
+    dop:{
+      type: Date,
+      required: false,
+    },
     description: {
       type: String,
       required: false,

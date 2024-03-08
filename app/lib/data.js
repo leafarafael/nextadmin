@@ -58,12 +58,14 @@ export const fetchAsset = async (id) => {
   try {
     connectToDB();
     const asset = await Asset.findById(id);
+
     return asset;
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch asset!");
   }
 };
+
 
 
 export const fetchAllEmployees = async (q, page) => {
