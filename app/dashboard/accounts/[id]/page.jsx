@@ -1,9 +1,9 @@
-import { updateUser } from "@/app/lib/actions";
-import { fetchUser } from "@/app/lib/data";
-import styles from "@/app/ui/dashboard/users/singleUser/singleUser.module.css";
+import { updateAccount } from "@/app/lib/actions";
+import { fetchAccount } from "@/app/lib/data";
+import styles from "@/app/ui/dashboard/users/singleUser/singleaccount.module.css";
 import Image from "next/image";
 
-const SingleUserPage = async ({ params }) => {
+const SingleAccountPage = async ({ params }) => {
   
   const { id } = params;
   const user = await fetchUser(id);
@@ -12,32 +12,32 @@ const SingleUserPage = async ({ params }) => {
     <div className={styles.container}>
       <div className={styles.infoContainer}>
         <div className={styles.imgContainer}>
-          <Image src={user.img || "/noavatar.png"} alt="" fill />
+          <Image src={account.img || "/noavatar.png"} alt="" fill />
         </div>
-        {user.username}
+        {account.username}
       </div>
       <div className={styles.formContainer}>
         <form action={updateUser} className={styles.form}>
-          <input type="hidden" name="id" value={user.id}/>
+          <input type="hidden" name="id" value={account.id}/>
           <label>Username</label>
-          <input type="text" name="username" placeholder={user.username} />
+          <input type="text" name="username" placeholder={account.username} />
           <label>Email</label>
-          <input type="email" name="email" placeholder={user.email} />
+          <input type="email" name="email" placeholder={account.email} />
           <label>Password</label>
-          <input type="password" name="password" />
+          <input type="text" name="password" />
           <label>Phone</label>
-          <input type="text" name="phone" placeholder={user.phone} />
+          <input type="text" name="phone" placeholder={account.phone} />
           <label>Address</label>
-          <textarea type="text" name="address" placeholder={user.address} />
+          <textarea type="text" name="address" placeholder={account.address} />
           <label>Is Admin?</label>
           <select name="isAdmin" id="isAdmin">
-            <option value={true} selected={user.isAdmin}>Yes</option>
-            <option value={false} selected={!user.isAdmin}>No</option>
+            <option value={true} selected={account.isAdmin}>Yes</option>
+            <option value={false} selected={!account.isAdmin}>No</option>
           </select>
           <label>Is Active?</label>
           <select name="isActive" id="isActive">
-            <option value={true} selected={user.isActive}>Yes</option>
-            <option value={false} selected={!user.isActive}>No</option>
+            <option value={true} selected={account.isActive}>Yes</option>
+            <option value={false} selected={!account.isActive}>No</option>
           </select>
           <button>Update</button>
         </form>
@@ -46,4 +46,4 @@ const SingleUserPage = async ({ params }) => {
   );
 };
 
-export default SingleUserPage;
+export default SingleAccountPage;

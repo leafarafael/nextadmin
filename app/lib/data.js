@@ -134,7 +134,7 @@ export const fetchEmployees = async (q, page) => {
 
   try {
     connectToDB();
-    const searchEmp = ["name", "lastName", "position"]; 
+    const searchEmp = ["name", "lastName", "position","empStatus"]; 
     const searchConditions = searchEmp.map(field => ({ [field]: { $regex: regex } }));
 
     const count = await Employee.find({ $or: searchConditions }).count();

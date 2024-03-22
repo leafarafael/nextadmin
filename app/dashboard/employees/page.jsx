@@ -30,6 +30,7 @@ const EmployeesPage = async ({ searchParams }) => {
             <td>First Name</td>
             <td>Last Name</td>
             <td>Position</td>
+            <td>Status</td>
             <td>Laptop</td>
             <td>Charger</td>
             <td>Bag</td>
@@ -58,6 +59,7 @@ const EmployeesPage = async ({ searchParams }) => {
 
               {/* <td>{employee.createdAt?.toString().slice(4, 16)}</td> */}
               <td>{employee.position}</td>
+              <td>{employee.empStatus}</td>
               <td>{employee.laptop ? "Yes" : "No"}</td>
               <td>{employee.charger ? "Yes" : "No"}</td>
               <td>{employee.bag ? "Yes" : "No"}</td>

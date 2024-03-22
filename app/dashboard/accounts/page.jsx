@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { auth } from "@/app/auth";
 
-const UsersPage = async ({ searchParams }) => {
+const AccountsPage = async ({ searchParams }) => {
   const { user } = await auth();
   if (!user || !user.isAdmin) {
     return null; 
@@ -71,4 +71,4 @@ const UsersPage = async ({ searchParams }) => {
   );
 };
 
-export default UsersPage;
+export default AccountsPage;
