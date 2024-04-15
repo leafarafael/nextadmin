@@ -1,6 +1,5 @@
 import { updateAccount } from "@/app/lib/actions";
 import { fetchAccount } from "@/app/lib/data";
-import styles from "@/app/ui/dashboard/users/singleUser/singleaccount.module.css";
 import Image from "next/image";
 
 const SingleAccountPage = async ({ params }) => {
