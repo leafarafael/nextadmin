@@ -29,8 +29,7 @@ const AccountsPage = async ({ searchParams }) => {
           <tr>
             <td>Name</td>
             <td>Link</td>
-            <td>Email</td>
-            <td>Password</td>
+            <td>Email/Username</td>
             <td>User</td>
             <td>Status</td>
           </tr>
@@ -39,9 +38,8 @@ const AccountsPage = async ({ searchParams }) => {
           {accounts.map((account) => (
             <tr key={account.id}>
               <td>{account.name}</td>
-              <td>{account.link}</td>
+              <td><a href={account.link} target="_blank">{account.link}</a></td>
               <td>{account.email}</td>
-              <td>{account.password}</td>
               <td>{account.user}</td>
               <td>{account.status}</td>
 

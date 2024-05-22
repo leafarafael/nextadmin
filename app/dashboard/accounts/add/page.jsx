@@ -10,7 +10,7 @@ const AddUserPage = async () => {
       <form action={addAccount} className={styles.form}>
         <input type="text" placeholder="Name" name="name" required />
         <input type="text" placeholder="Link" name="link"  />
-        <input type="email" placeholder="Email" name="email"  />
+        <input type="text" placeholder="Email / Username" name="email"  />
         <input
           type="password"
           placeholder="Password"

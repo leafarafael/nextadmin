@@ -117,7 +117,7 @@ export const updateAccount = async (formData) => {
         (updateFields[key] === "" || undefined) && delete updateFields[key]
     );
 
-    await User.findByIdAndUpdate(id, updateFields);
+    await Account.findByIdAndUpdate(id, updateFields);
   } catch (err) {
     console.log(err);
     throw new Error("Failed to update account!");
