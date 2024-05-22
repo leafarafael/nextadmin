@@ -40,6 +40,38 @@ const userSchema = new mongoose.Schema(
 );
 
 
+const accountSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    link: {
+      type: String,
+      required: false,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    user: {
+      type: String,
+      required: false,
+    },
+
+    status: {
+      type: String,
+      required: false,
+    },
+  },
+  { timestamps: true }
+);
+
+
 const employeeSchema = new mongoose.Schema(
   {
     name: {
@@ -144,5 +176,6 @@ const assetSchema = new mongoose.Schema(
 );
 
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
+export const Account = mongoose.models.Account || mongoose.model("Account", accountSchema);
 export const Asset = mongoose.models.Asset || mongoose.model("Asset", assetSchema);
 export const Employee = mongoose.models.Employee || mongoose.model("Employee", employeeSchema);

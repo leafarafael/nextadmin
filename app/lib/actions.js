@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { Employee, Asset, User } from "./models";
+import { Employee, Asset, User, Account } from "./models";
 import { connectToDB } from "./utils";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
@@ -68,6 +68,65 @@ export const updateUser = async (formData) => {
   revalidatePath("/dashboard/users");
   redirect("/dashboard/users");
 };
+
+
+export const addAccount = async (formData) => {
+  const { name, link, email, password, user, status } =
+    Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+
+    const newAccount = new Account({
+      name, 
+      link, 
+      email, 
+      password, 
+      user, 
+      status
+    });
+
+    await newAccount.save();
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to create an account!");
+  }
+
+  revalidatePath("/dashboard/accounts");
+  redirect("/dashboard/accounts");
+};
+
+export const updateAccount = async (formData) => {
+  const { id, name, link, email, password, user, status } =
+    Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+
+    const updateFields = {
+      name, 
+      link, 
+      email, 
+      password, 
+      user, 
+      status
+    };
+
+    Object.keys(updateFields).forEach(
+      (key) =>
+        (updateFields[key] === "" || undefined) && delete updateFields[key]
+    );
+
+    await User.findByIdAndUpdate(id, updateFields);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to update account!");
+  }
+
+  revalidatePath("/dashboard/accounts");
+  redirect("/dashboard/accounts");
+};
+
 
 export const addAsset = async (formData) => {
   const { assetTag, brand, assetModel, serial, assetType, 
@@ -226,6 +285,21 @@ export const deleteUser = async (formData) => {
   revalidatePath("/dashboard/users");
 };
 
+export const deleteAccount = async (formData) => {
+  const { id } = Object.fromEntries(formData);
+
+  try {
+       
+    connectToDB();
+    await User.findByIdAndDelete(id);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to delete account!");
+  }
+
+  revalidatePath("/dashboard/accounts");
+};
+
 export const deleteAsset = async (formData) => {
   const { id } = Object.fromEntries(formData);
 
@@ -259,7 +333,6 @@ export const authenticate = async (prevState, formData) => {
 
   try {
     await signIn("credentials", { username, password });
-
   } catch (err) {
     return "Please refresh the page!";
   }

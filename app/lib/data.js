@@ -1,4 +1,4 @@
-import { Asset, User, Employee } from "./models";
+import { Asset, User, Employee, Account } from "./models";
 import { connectToDB } from "./utils";
 
 export const fetchUsers = async (q, page) => {
@@ -28,6 +28,38 @@ export const fetchUser = async (id) => {
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch user!");
+  }
+};
+
+export const fetchAccounts = async (q, page) => {
+  const regex = new RegExp(q, "i");
+  const ITEM_PER_PAGE = 15;
+
+  try {
+    connectToDB();
+    const searchFields = ["email", "name", "user", "link", "status"]; 
+    const searchConditions = searchFields.map(field => ({ [field]: { $regex: regex } }));
+
+    const count = await Account.find({ $or: searchConditions }).count();
+    const accounts = await Account.find({ $or: searchConditions })
+      .limit(ITEM_PER_PAGE)
+      .skip(ITEM_PER_PAGE * (page - 1));
+    return { count, accounts };
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch accounts!");
+  }
+};
+
+export const fetchAccount = async (id) => {
+  console.log(id);
+  try {
+    connectToDB();
+    const account = await Account.findById(id);
+    return account;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch account!");
   }
 };
 
