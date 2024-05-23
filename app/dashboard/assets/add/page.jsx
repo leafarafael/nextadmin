@@ -21,6 +21,7 @@ const AddAssetPage = async () => {
           <option value="Photocopier">Photocopier</option>
           <option value="Printer">Printer</option>
           <option value="Scanner">Scanner</option>
+          <option value="Speaker">Speaker</option>
           <option value="Telephone">Telephone</option>
           <option value="Switch">Switch</option>
           <option value="Router">Router</option>
