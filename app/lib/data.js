@@ -70,7 +70,7 @@ export const fetchAssets = async (q, page) => {
 
   try {
     connectToDB();
-    const searchFields = ["assetType", "brand", "assetModel", "status", "dept", "user"]; 
+    const searchFields = ["assetType", "brand", "assetModel", "serial", "status", "dept", "user"]; 
     const searchConditions = searchFields.map(field => ({ [field]: { $regex: regex } }));
 
 

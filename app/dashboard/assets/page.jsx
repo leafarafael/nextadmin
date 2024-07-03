@@ -28,6 +28,7 @@ const AssetsPage = async ({ searchParams }) => {
             <td>Model</td>
             <td>Status</td>
             <td>Department</td>
+            <td>Serial Number</td>
             <td>User</td>
             <td>Action</td>
           </tr>
@@ -47,11 +48,11 @@ const AssetsPage = async ({ searchParams }) => {
                   {asset.assetType}
                 </div>
               </td>
-              
               <td>{asset.brand}</td>
               <td>{asset.assetModel}</td>
               <td>{asset.status}</td>
               <td>{asset.dept}</td>
+              <td>{asset.serial}</td>
               <td>{asset.user}</td>
               <td>
                 <div className={styles.buttons}>
